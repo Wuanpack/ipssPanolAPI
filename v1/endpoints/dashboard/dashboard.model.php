@@ -11,7 +11,7 @@ class DashboardModel
     /* =========================
        KPIs / CARDS
        ========================= */
-    public function getMetrics(): array
+    private function getMetrics(): array
     {
         [$con, $conn] = $this->getConnection();
 
@@ -47,7 +47,7 @@ class DashboardModel
     /* =========================
        TABLA MOVIMIENTOS
        ========================= */
-    public function getMovimientos(): array
+    private function getMovimientos(): array
     {
         [$con, $conn] = $this->getConnection();
 

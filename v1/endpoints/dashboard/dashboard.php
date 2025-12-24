@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../../../bootstrap.php';
+require_once __DIR__ . '/../../../config.php';
 
 require_once BASE_PATH . '/common/database.php';
 require_once BASE_PATH . '/common/validators.php';
@@ -9,13 +9,12 @@ require_once BASE_PATH . '/common/response.php';
 require_once __DIR__ . '/dashboard.model.php';
 
 /* Configuración */
-define('AUTH_TOKEN', 'ipss.2025.T3');
 define('ALLOWED_METHODS', ['GET']);
 
 /* Headers */
-header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Origin: " . CORS_ORIGIN);
 header("Access-Control-Allow-Methods: " . implode(', ', ALLOWED_METHODS));
-header("Content-Type: application/json; charset=UTF-8");
+header("Content-Type: " . DEFAULT_CONTENT_TYPE);
 
 /* =========================
    HANDLER GET
@@ -42,6 +41,6 @@ switch ($method) {
         break;
 
     default:
-        sendJsonResponse(501, null, $method);
+        sendJsonResponse(501, null, "Método [ " . $method . " ] no implementado");
         break;
 }
