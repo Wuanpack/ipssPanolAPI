@@ -26,6 +26,30 @@ class HerramientasModel
         return $herr ?: null;
     }
 
+    public function getInventario(): array
+    {
+        [$con, $conn] = $this->getConnection();
+
+        try {
+            $sql = "SELECT id, n_parte, nombre, figura, indice, pagina, cantidad, cantidad_disponible, activo
+                    FROM herramientas";
+
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+
+            $result = $stmt->get_result();
+            $inventario = [];
+
+            while ($row = $result->fetch_assoc()) {
+                $inventario[] = $row;
+            }
+
+            return $inventario;
+        } finally {
+            $con->closeConnection();
+        }
+    }
+
     public function updateHerramienta(int $id, array $data): void
     {
         [$con, $conn] = $this->getConnection();
