@@ -68,7 +68,11 @@ Estructura del proyecto: API Pañol de Herramientas J85-GE-21 B/C
 │           ├─ aceptar.php               # POST aceptar solicitud
 │           ├─ rechazar.php              # POST rechazar solicitud
 │           └─ devolver.php              # POST devolver herramienta
-└─ config.php
+│
+├─ config.php                            # Configuracion de headers
+├─ database.sql                          # Script para crear tablas requeridas y poblarlas
+└─ README.MD                             # README           
+
 
 ```
 
